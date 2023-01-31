@@ -112,11 +112,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="satuan">Satuan</label>
-                                <select name="satuan" class="form-control" id="satuan">
+                                <select required name="satuan_id" class="form-control" id="satuan">
                                     <option value="" disabled hidden selected>-- Pilih Satuan --</option>
-                                    <option value="pcs">pcs</option>
-                                    <option value="btg">btg</option>
-                                    <option value="lb">lb</option>
+                                    @foreach ($satuans as $satuan)
+                                        <option {{ $satuan->id == $barangMasuk->satuan_id ? 'selected' : '' }}
+                                            value="{{ $satuan->id }}">{{ $satuan->satuan }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
