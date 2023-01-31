@@ -17,7 +17,7 @@ class BarangController extends Controller
      */
     public function index()
     {
-        // $obats = Obat::with("satuan")->get();
+        // $barangs = Barang::with("satuan")->get();
         $barangs = Barang::with("satuan")->get();
         $satuans = Satuan::all();
         $kode_barang = Barang::generateKode();
