@@ -32,8 +32,8 @@ class BarangController extends Controller
         if ($request->hasFile('pic')) {
             if ($request->file('pic')->isValid()) {
                 $fileName = time() . '-' . date('M') . '.' . $request->file('pic')->extension();
-                $request->file('pic')->move(public_path('assets/image/obat'), $fileName);
-                $data['pic'] = "assets/image/obat/$fileName";
+                $request->file('pic')->move(public_path('assets/image/pic'), $fileName);
+                $data['pic'] = "assets/image/pic/$fileName";
             }
         }
         $create = Barang::create($data);
@@ -63,15 +63,15 @@ class BarangController extends Controller
         $barang = Barang::find($kode_barang);
         if ($barang) {
             $data = $request->except('_token');
-            // if ($obat->stok_awal != $data['stok_awal']) {
-            //     if ($data['stok_awal'] > $obat->stok_awal) {
-            //         $total =  $data['stok_awal'] - $obat->stok_awal;
-            //         $data['jumlah'] = $obat->jumlah + $total;
-            //     } else {
-            //         $total =   $obat->stok_awal - $data['stok_awal'];
-            //         $data['jumlah'] = $obat->jumlah - $total;
-            //     }
-            // }
+            if ($barang->stok_awal != $data['stok_awal']) {
+                if ($data['stok_awal'] > $barang->stok_awal) {
+                    $total =  $data['stok_awal'] - $barang->stok_awal;
+                    $data['jumlah'] = $barang->jumlah + $total;
+                } else {
+                    $total =   $barang->stok_awal - $data['stok_awal'];
+                    $data['jumlah'] = $barang->jumlah - $total;
+                }
+            }
             if ($request->hasFile('pic')) {
                 if ($request->file('pic')->isValid()) {
                     if (file_exists(public_path($request->file("pic")) && $request->file("pic") != null)) {
