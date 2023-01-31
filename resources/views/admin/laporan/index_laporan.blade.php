@@ -24,7 +24,7 @@
                         <label for="laporan">Type Laporan</label>
                         <select required name="laporan" id="laporan" class="custom-select">
                             <option value="" disabled hidden selected>-- Pilih Laporan --</option>
-                            <option value="stok-akhir">Stok Akhir</option>
+                            {{-- <option value="stok-akhir">Stok Akhir</option> --}}
                             <option value="order">Order</option>
                             <option value="barang-masuk">Barang Masuk</option>
                             <option value="barang-keluar">Barang Keluar</option>
