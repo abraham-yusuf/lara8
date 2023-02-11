@@ -18,8 +18,8 @@ class Userseeder extends Seeder
         //
         User::create([
             "nama" => "Administrasi",
-            "username" => "administrasi",
-            "email" => "administrasi@mail.com",
+            "username" => "admin",
+            "email" => "admin@mail.com",
             "password" => bcrypt('123456'),
             "role" => "administrasi",
             "nomer_tlpn" => "0896726478264",

@@ -40,7 +40,7 @@
                 $totalStokKeluar = 0;
                 foreach ($dt->detailTransaksi as $order) {
                     if ($order->barang->satuan_id != $order->satuan_id) {
-                        $totalStokKeluar += $order->satuan->jumlah_persatuan * $order->jumlah;
+                        $totalStokKeluar += $order->satuan->jumlah_persatuan->total_harga * $order->jumlah;
                     } else {
                         $totalStokKeluar += $order->jumlah;
                     }
@@ -56,7 +56,7 @@
                 <td>{{ $totalStokMasuk }}</td>
                 <td>{{ $totalStokKeluar }}</td>
                 <td>{{ $dt->stok_awal + $totalStokMasuk - $totalStokKeluar }}</td>
-                <td>Rp.{{ number_format($dt->sub_total, 2, ',', '.') }}</td>
+                <td>Rp.{{ number_format($dt->total_harga, 2, ',', '.') }}</td>
 
             </tr>
         @endforeach
